@@ -1,0 +1,80 @@
+import java.util.*;
+
+class Person {
+    private String name;
+    private int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public void setName(String name) { this.name = name; }
+    public void setAge(int age) { this.age = age; }
+
+    void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+class Employee extends Person {
+    private String dept;
+    private double salary;
+
+    Employee(String name, int age, String dept, double salary) {
+        super(name, age);
+        this.dept = dept;
+        this.salary = salary;
+    }
+
+    void displayInfo() {
+        super.displayInfo();
+        System.out.println("Department: " + dept + ", Salary: " + salary);
+    }
+}
+
+abstract class Shape {
+    abstract double area();
+}
+
+class Circle extends Shape {
+    private double radius;
+    Circle(double r) { radius = r; }
+    double area() { return Math.PI * radius * radius; }
+}
+
+class Engine {
+    void start() { System.out.println("Engine started"); }
+}
+
+class Car {
+    private Engine engine;
+    Car(Engine e) { engine = e; }
+    void startCar() {
+        engine.start();
+        System.out.println("Car is running");
+    }
+}
+
+public class OOPConceptsDemo {
+    public static void main(String[] args) {
+        Person p = new Person("Ashik", 22);
+        p.displayInfo();
+
+        Employee e = new Employee("Rahim", 25, "CSE", 50000);
+        e.displayInfo();
+
+        Shape c = new Circle(5);
+        System.out.println("Circle area: " + c.area());
+
+        Engine eng = new Engine();
+        Car car = new Car(eng);
+        car.startCar();
+
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple"); fruits.add("Banana"); fruits.add("Mango");
+        System.out.println("Fruits list: " + fruits);
+    }
+}
